@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import {
   Github,
@@ -29,7 +29,9 @@ import {
   Coffee,
 } from "lucide-react";
 import Loader from "./Loader";
-
+import { projects } from "@/utils/utils";
+import Image from "next/image";
+const resume = "/resume/MDShahnawazResume.pdf";
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -203,50 +205,50 @@ const Portfolio = () => {
     ],
   };
 
-  const projects = [
-    {
-      title: "FirstLine Project",
-      description:
-        "A privacy-encrypted communication platform with admin panel and RDBMS integration for secure data handling.",
-      image: "/api/placeholder/400/250",
-      tech: ["React", "Node.js", "MongoDB", "Express", "JWT"],
-      liveDemo: "#",
-      github: "https://github.com/MdShahnawaz474",
-      featured: true,
-      stats: { views: "2.5K", likes: "120", stars: "45" },
-    },
-    {
-      title: "FirstBench Classes",
-      description:
-        "An Ed-Tech platform for students to solve doubts in real-time, featuring video sessions and chat functionality.",
-      image: "/api/placeholder/400/250",
-      tech: ["React", "Socket.io", "Node.js", "MongoDB", "WebRTC"],
-      liveDemo: "#",
-      github: "https://github.com/MdShahnawaz474",
-      featured: true,
-      stats: { views: "1.8K", likes: "98", stars: "32" },
-    },
-    {
-      title: "Task Management App",
-      description:
-        "A full-stack todo application with user authentication, real-time updates, and responsive design.",
-      image: "/api/placeholder/400/250",
-      tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
-      liveDemo: "#",
-      github: "https://github.com/MdShahnawaz474",
-      stats: { views: "950", likes: "67", stars: "23" },
-    },
-    {
-      title: "E-Commerce Clone",
-      description:
-        "A modern e-commerce platform with cart functionality, payment integration, and admin dashboard.",
-      image: "/api/placeholder/400/250",
-      tech: ["React", "Redux", "Node.js", "Stripe API", "MongoDB"],
-      liveDemo: "#",
-      github: "https://github.com/MdShahnawaz474",
-      stats: { views: "1.2K", likes: "89", stars: "34" },
-    },
-  ];
+  // const projects = [
+  //   {
+  //     title: "FirstLine Project",
+  //     description:
+  //       "A privacy-encrypted communication platform with admin panel and RDBMS integration for secure data handling.",
+  //     image: "/api/placeholder/400/250",
+  //     tech: ["React", "Node.js", "MongoDB", "Express", "JWT"],
+  //     liveDemo: "#",
+  //     github: "https://github.com/MdShahnawaz474",
+  //     featured: true,
+  //     stats: { views: "2.5K", likes: "120", stars: "45" },
+  //   },
+  //   {
+  //     title: "FirstBench Classes",
+  //     description:
+  //       "An Ed-Tech platform for students to solve doubts in real-time, featuring video sessions and chat functionality.",
+  //     image: "/api/placeholder/400/250",
+  //     tech: ["React", "Socket.io", "Node.js", "MongoDB", "WebRTC"],
+  //     liveDemo: "#",
+  //     github: "https://github.com/MdShahnawaz474",
+  //     featured: true,
+  //     stats: { views: "1.8K", likes: "98", stars: "32" },
+  //   },
+  //   {
+  //     title: "Task Management App",
+  //     description:
+  //       "A full-stack todo application with user authentication, real-time updates, and responsive design.",
+  //     image: "/api/placeholder/400/250",
+  //     tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
+  //     liveDemo: "#",
+  //     github: "https://github.com/MdShahnawaz474",
+  //     stats: { views: "950", likes: "67", stars: "23" },
+  //   },
+  //   {
+  //     title: "E-Commerce Clone",
+  //     description:
+  //       "A modern e-commerce platform with cart functionality, payment integration, and admin dashboard.",
+  //     image: "/api/placeholder/400/250",
+  //     tech: ["React", "Redux", "Node.js", "Stripe API", "MongoDB"],
+  //     liveDemo: "#",
+  //     github: "https://github.com/MdShahnawaz474",
+  //     stats: { views: "1.2K", likes: "89", stars: "34" },
+  //   },
+  // ];
 
   const testimonials = [
     {
@@ -307,13 +309,13 @@ const Portfolio = () => {
 
   // Loading Screen
   if (isLoading) {
-   return <Loader/>
+    return <Loader />;
   }
 
   return (
     <div
       className={`min-h-screen transition-all duration-300 ${
-        isDarkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+        isDarkMode ? "bg-gray-900 text-white" : "bg-gray-500 text-black"
       } relative overflow-x-hidden`}
     >
       {/* Cursor follower */}
@@ -385,12 +387,12 @@ const Portfolio = () => {
                   )}
                 </button>
               ))}
-              <button
+              {/* <button
                 onClick={() => setIsDarkMode(!isDarkMode)}
                 className="p-2 rounded-full transition-all duration-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-110"
               >
                 {isDarkMode ? "☀️" : "🌙"}
-              </button>
+              </button> */}
             </div>
 
             {/* Mobile menu button */}
@@ -561,16 +563,15 @@ const Portfolio = () => {
               <div className="relative">
                 <p className="text-lg leading-relaxed text-gray-300 relative z-10">
                   I'm a passionate{" "}
-                 <span className="text-blue-400 font-semibold relative">
-  Full Stack Web Developer
-  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-transparent block"></span>
-</span>
+                  <span className="text-blue-400 font-semibold relative">
+                    Full Stack Web Developer
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-transparent block"></span>
+                  </span>
                   with expertise in the MERN Stack (MongoDB, Express, React,
                   Node.js). Currently working as an{" "}
                   <span className="text-purple-400 font-semibold relative">
                     SDE 1
                     <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-purple-400 to-transparent block"></span>
-
                   </span>{" "}
                   at FirstBench, I have strong knowledge of REST APIs,
                   Authentication (JWT), and Database Design (SQL & NoSQL).
@@ -612,10 +613,12 @@ const Portfolio = () => {
 
               {/* Download CV Button */}
               <div className="mt-8">
+                <a href={resume} download>
                 <button className="group px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-800 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center gap-2 border border-gray-600 hover:border-gray-500">
                   <Download className="w-4 h-4 group-hover:animate-bounce" />
                   Download CV
                 </button>
+                </a>
               </div>
             </div>
 
@@ -686,7 +689,7 @@ const Portfolio = () => {
 
                 <div className="space-y-6 relative z-10">
                   {skillList.map((skill) => (
-                    <div key={skill.name}  className="space-y-3 group/skill">
+                    <div key={skill.name} className="space-y-3 group/skill">
                       <div className="flex justify-between items-center">
                         <span className="flex items-center gap-3">
                           <span className="text-2xl group-hover/skill:animate-bounce">
@@ -980,24 +983,14 @@ const Portfolio = () => {
                 } relative`}
               >
                 <div className="relative overflow-hidden">
-                  <div className="w-full h-48 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 flex items-center justify-center relative">
-                    <Code className="w-16 h-16 text-gray-400 z-10" />
-
-                    {/* Animated background pattern */}
-                    <div className="absolute inset-0 opacity-20">
-                      {[...Array(6)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-2 h-2 bg-blue-400 rounded-full animate-float"
-                          style={{
-                            left: `${15 + i * 15}%`,
-                            top: `${20 + (i % 2) * 60}%`,
-                            animationDelay: `${i * 0.2}s`,
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={400}
+                    height={250}
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                
 
                   {project.featured && (
                     <div className="absolute top-4 right-4">
@@ -1025,7 +1018,7 @@ const Portfolio = () => {
                   </div>
                 </div>
 
-                <div className="p-6">
+                <div className="p-6 bg-gray-900">
                   <h3 className="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors">
                     {project.title}
                   </h3>
@@ -1071,6 +1064,8 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
+
+     
 
       {/* Testimonials Section */}
       <section
